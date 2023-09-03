@@ -1,0 +1,23 @@
+Frontend on React
+Backend on Node.js
+Database on MongoDB
+
+Functionality:
+- Login
+- Registration
+- Add New AI Tool
+- View AI Tools (Explorer Page, Main Dashboard)
+
+
+Tasks List
+
+- Create Login Page
+- Create Registration Page
+- Create Explorer Page
+- Create Add New Page
+- Create Server API
+- Integrate Server API with Client
+- Test
+- Debug
+- Host Client on Firebase
+- Host Server on Heroku
