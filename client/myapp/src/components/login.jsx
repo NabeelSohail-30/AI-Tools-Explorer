@@ -107,7 +107,7 @@ export default function Login() {
                 </Grid> */}
                 <Grid item>
                   <Grid item>
-                    <RouterLink to="/registration" variant="body2">
+                    <RouterLink to="/register" variant="body2">
                       {"Don't have an account? Sign Up"}
                     </RouterLink>
                   </Grid>
