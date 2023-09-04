@@ -18,8 +18,12 @@ export default function Register() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
+      name: data.get("firstname"),
+      lastname: data.get("lastname"),
       email: data.get("email"),
+      phone: data.get("phone"),
       password: data.get("password"),
+      repass: data.get("repass"),
     });
   };
 
@@ -27,14 +31,14 @@ export default function Register() {
     <ThemeProvider theme={defaultTheme}>
       <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
-        <Grid item xs={9} sm={7} md={4} component={Paper} elevation={6} square>
+        <Grid item xs={12} sm={7} md={7} component={Paper} elevation={0} square>
           <Box
             sx={{
-              my: 4,
-              mx: 10,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
+              justifyContent: "center",
+              height: "100%",
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
@@ -47,63 +51,90 @@ export default function Register() {
               component="form"
               noValidate
               onSubmit={handleSubmit}
-              sx={{ mt: 1 }}
+              sx={{ mt: 1, width: "80%" }}
             >
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="name"
-                label="Full Name"
-                name="name"
-                autoComplete="name"
-                autoFocus
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="phone"
-                label="Phone Number"
-                name="phone"
-                autoComplete="phone"
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="re_password"
-                label="Re Enter Password"
-                type="password"
-                id="re_password"
-              />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
-                Register Now
-              </Button>
-              <Grid item>
+              <Grid container spacing={4}>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="firstname"
+                    label="First Name"
+                    name="firstname"
+                    autoComplete="firstname"
+                    autoFocus
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="email"
+                    label="Last Name"
+                    name="lastname"
+                    autoComplete="lastname"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email Address"
+                    name="email"
+                    autoComplete="email"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="phone"
+                    label="Phone Number"
+                    name="phone"
+                    autoComplete="phone"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="password"
+                    label="Password"
+                    name="password"
+                    autoComplete="password"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="repass"
+                    label="Re-Password"
+                    name="repass"
+                    autoComplete="repass"
+                  />
+                </Grid>
+              </Grid>
+              <Grid container justifyContent="center">
+                <Grid item>
+                  <Button
+                    type="submit"
+                    width="70%"
+                    variant="contained"
+                    sx={{ mt: 1, mb: 2 }}
+                  >
+                    Register Now
+                  </Button>
+                </Grid>
+              </Grid>
+              <Grid container justifyContent="center">
                 <Grid item>
                   <RouterLink to="/" variant="body2">
                     {"Already have an account? Login"}
@@ -116,8 +147,8 @@ export default function Register() {
         <Grid
           item
           xs={false}
-          sm={5}
-          md={8}
+          sm={3}
+          md={5}
           sx={{
             backgroundImage: `url(${require("./Images/bg.jpg")})`,
             backgroundRepeat: "no-repeat",
