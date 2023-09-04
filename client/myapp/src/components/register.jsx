@@ -9,6 +9,7 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Link as RouterLink } from "react-router-dom";
 
 const defaultTheme = createTheme();
 
@@ -96,6 +97,13 @@ export default function Register() {
               >
                 Register Now
               </Button>
+              <Grid item>
+                <Grid item>
+                  <RouterLink to="/" variant="body2">
+                    {"already have an account? Login"}
+                  </RouterLink>
+                </Grid>
+              </Grid>
             </Box>
           </Box>
         </Grid>
