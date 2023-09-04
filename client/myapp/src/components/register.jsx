@@ -67,7 +67,6 @@ export default function Register() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
-                autoFocus
               />
               <TextField
                 margin="normal"
@@ -77,7 +76,6 @@ export default function Register() {
                 label="Phone Number"
                 name="phone"
                 autoComplete="phone"
-                autoFocus
               />
               <TextField
                 margin="normal"
