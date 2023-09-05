@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, Button } from "@mui/material";
 
 import Header from "./header";
 import FooterComponent from "./footer";
@@ -22,10 +22,21 @@ const Explorer = () => {
       <Box
         style={containerStyle}
         display={"flex"}
+        flexDirection={"column"}
         justifyContent={"center"}
         textAlign={"center"}
       >
         <Typography variant="h2">AI Tools Explorer</Typography>
+        <Button
+          variant="contained"
+          href="/addtool"
+          sx={{
+            margin: "20px auto",
+            width: "30%",
+          }}
+        >
+          Add New AI Tool
+        </Button>
       </Box>
       <AItools />
       <FooterComponent />
