@@ -5,15 +5,8 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
 const Header = () => {
-  const headerStyle = {
-    padding: "8px 14px",
-    color: "#fff",
-    width: "100%",
-    marginBottom: "60px",
-  };
-
   return (
-    <AppBar position="static" style={headerStyle}>
+    <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" sx={{ flexGrow: 1 }}>
           AI Tools Explorer
