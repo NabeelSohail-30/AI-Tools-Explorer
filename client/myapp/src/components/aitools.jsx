@@ -1,18 +1,15 @@
 import React from "react";
 import { Grid } from "@mui/material";
+import { Typography } from "@mui/material";
 
 const AItools = () => {
   return (
-    <Grid
-      container
-      spacing={{ xs: 2, md: 3 }}
-      columns={{ xs: 4, sm: 8, md: 12 }}
-    >
-      {Array.from(Array(6)).map((_, index) => (
-        <Grid item xs={2} sm={4} md={4} key={index}>
-          <Grid item>xs=2</Grid>
-        </Grid>
-      ))}
+    <Grid container display={"flex"} justifyContent={"center"}>
+      <Grid item>
+        <Typography variant="body2">
+          Here will come all the cards of AI Tools
+        </Typography>
+      </Grid>
     </Grid>
   );
 };
