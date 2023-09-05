@@ -150,7 +150,7 @@ export default function Register() {
           sm={3}
           md={5}
           sx={{
-            backgroundImage: `url(${require("./Images/bg.jpg")})`,
+            backgroundImage: `url(${require("./Images/reg.jpg")})`,
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
               t.palette.mode === "light"
