@@ -14,6 +14,7 @@ const AddAIToolForm = () => {
     e.preventDefault();
     // Send a POST request to your server's API to add the new AI Tool
     console.log({ toolName, toolCategory, toolDescription, toolURL });
+    window.location.href = "/explorer";
   };
 
   return (
