@@ -9,12 +9,7 @@ import AddAIToolForm from './components/addtool';
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/register" element={<Register />} />
       <Route path="/explorer" element={<Explorer />} />
-      <Route path="/addtool" element={<AddAIToolForm />} />
-
-
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
