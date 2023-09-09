@@ -1,25 +1,22 @@
 import express from 'express';
-import mongoose from 'mongoose';
 import toolsModel from '../model/toolsModel.mjs';
 
 const router = express.Router();
 router.use(express.json());
 
-// Middleware to validate request body
-// const validateToolFields = (req, res, next) => {
-//     const { name, category, description, link, tags } = req.body;
-//     if (!name || !category || !description || !link) {
-//         return res.status(400).json({
-//             message: 'Send all fields',
-//         });
-//     }
-//     next();
-// };
-
 // Error handler middleware
 const errorHandler = (res, error) => {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
+};
+
+// Middleware to check required fields for tool creation
+const validateToolData = (req, res, next) => {
+    const { name, category, owner, description, link } = req.body;
+    if (!name || !category || !owner || !description || !link) {
+        return res.status(400).json({ message: 'Send all required fields' });
+    }
+    next();
 };
 
 // Get All Tools
@@ -51,20 +48,8 @@ router.get('/:id', async (req, res) => {
 });
 
 // Create New Tool
-router.post('/', async (req, res) => {
+router.post('/', validateToolData, async (req, res) => {
     try {
-        if (
-            !req.body.name ||
-            !req.body.category ||
-            !req.body.owner ||
-            !req.body.description ||
-            !req.body.link
-        ) {
-            return res.status(400).send({
-                message: 'Send all required fields',
-            });
-        }
-
         const newTool = {
             name: req.body.name,
             category: req.body.category,
@@ -73,14 +58,11 @@ router.post('/', async (req, res) => {
             link: req.body.link,
         };
 
-        console.log(newTool);
-
         const tool = await toolsModel.create(newTool);
 
         return res.status(201).send(tool);
     } catch (error) {
-        console.log(error.message);
-        res.status(500).send({ message: error.message });
+        errorHandler(res, error);
     }
 });
 
