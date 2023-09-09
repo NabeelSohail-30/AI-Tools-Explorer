@@ -1,10 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 
-import Login from './components/login';
-import Register from './components/register';
 import NotFound from './components/notfound';
 import Explorer from './components/explorer';
-import AddAIToolForm from './components/addtool';
 
 function App() {
   return (
