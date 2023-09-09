@@ -5,15 +5,15 @@ import toolsModel from '../model/toolsModel.mjs';
 const router = express.Router();
 
 // Middleware to validate request body
-const validateToolFields = (req, res, next) => {
-    const { name, category, description, link, tags } = req.body;
-    if (!name || !category || !description || !link || !tags) {
-        return res.status(400).json({
-            message: 'Send all fields',
-        });
-    }
-    next();
-};
+// const validateToolFields = (req, res, next) => {
+//     const { name, category, description, link, tags } = req.body;
+//     if (!name || !category || !description || !link) {
+//         return res.status(400).json({
+//             message: 'Send all fields',
+//         });
+//     }
+//     next();
+// };
 
 // Error handler middleware
 const errorHandler = (res, error) => {
@@ -50,7 +50,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Create New Tool
-router.post('/', validateToolFields, async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const tool = await toolsModel.create(req.body);
         res.status(201).json({
@@ -62,7 +62,7 @@ router.post('/', validateToolFields, async (req, res) => {
 });
 
 // Update Tool
-router.put('/:id', validateToolFields, async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
         const tool = await toolsModel.findByIdAndUpdate(
             req.params.id,

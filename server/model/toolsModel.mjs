@@ -8,7 +8,6 @@ const toolsSchema = new Schema(
         category: String,
         description: String,
         link: String,
-        tags: [String],
     },
     {
         timestamps: true,

@@ -19,11 +19,11 @@ app.get('/', (req, res) => {
 app.use('/tools', toolsRoute)
 
 mongoose
-    .connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log('App connected to database');
-        app.listen(PORT, () => {
-            console.log(`App is listening to port: ${PORT}`);
+        app.listen(process.env.PORT, () => {
+            console.log(`App is listening to port: ${process.env.PORT}`);
         });
     })
     .catch((error) => {
