@@ -4,37 +4,41 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <nav className="bg-blue-500 p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <div className="flex items-center">
-          <span className="text-white text-xl font-semibold">
-            AI Tools Explorer
-          </span>
-        </div>
-        <ul className="flex space-x-4">
-          <li>
-            <Link to={"/"} className="text-white hover:text-gray-200">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link to={"/About"} className="text-white hover:text-gray-200">
-              About
-            </Link>
-          </li>
-          <li>
-            <Link to={"/Contact"} className="text-white hover:text-gray-200">
-              Contact
-            </Link>
-          </li>
-          <li>
-            <Link to={"/Admin"} className="text-white hover:text-gray-200">
-              Admin
-            </Link>
-          </li>
-        </ul>
+    <header class="text-white body-font bg-blue-600">
+      <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <a class="flex title-font font-bold items-center mb-4 md:mb-0">
+          <span class="ml-3 text-xl">AI Tools Explorer</span>
+        </a>
+        <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+          <Link to={"/"} className="mr-5 hover:text-gray-900">
+            Home
+          </Link>
+          <Link to={"/About"} className="mr-5 hover:text-gray-900">
+            About
+          </Link>
+          <Link to={"/Contact"} className="mr-5 hover:text-gray-900">
+            Contact
+          </Link>
+        </nav>
+        <Link
+          to={"/Admin"}
+          class="inline-flex items-center bg-blue-900 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 hover:text-blue-900 rounded text-base mt-4 md:mt-0"
+        >
+          Admin
+          <svg
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            class="w-4 h-4 ml-1"
+            viewBox="0 0 24 24"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </Link>
       </div>
-    </nav>
+    </header>
   );
 };
 
