@@ -1,13 +1,27 @@
 import mongoose from "mongoose";
 
-const { Schema } = mongoose;
-
-const toolsSchema = new Schema(
+const toolsSchema = mongoose.Schema(
     {
-        name: String,
-        category: String,
-        description: String,
-        link: String,
+        name: {
+            type: String,
+            required: true,
+        },
+        category: {
+            type: String,
+            required: true,
+        },
+        description: {
+            type: String,
+            required: true,
+        },
+        link: {
+            type: String,
+            required: true,
+        },
+        owner: {
+            type: String,
+            required: true,
+        },
     },
     {
         timestamps: true,

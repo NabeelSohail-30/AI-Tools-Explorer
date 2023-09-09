@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import toolsModel from '../model/toolsModel.mjs';
 
 const router = express.Router();
+router.use(express.json());
 
 // Middleware to validate request body
 // const validateToolFields = (req, res, next) => {
@@ -52,12 +53,34 @@ router.get('/:id', async (req, res) => {
 // Create New Tool
 router.post('/', async (req, res) => {
     try {
-        const tool = await toolsModel.create(req.body);
-        res.status(201).json({
-            data: tool,
-        });
+        if (
+            !req.body.name ||
+            !req.body.category ||
+            !req.body.owner ||
+            !req.body.description ||
+            !req.body.link
+        ) {
+            return res.status(400).send({
+                message: 'Send all required fields',
+            });
+        }
+
+        const newTool = {
+            name: req.body.name,
+            category: req.body.category,
+            owner: req.body.owner,
+            description: req.body.description,
+            link: req.body.link,
+        };
+
+        console.log(newTool);
+
+        const tool = await toolsModel.create(newTool);
+
+        return res.status(201).send(tool);
     } catch (error) {
-        errorHandler(res, error);
+        console.log(error.message);
+        res.status(500).send({ message: error.message });
     }
 });
 

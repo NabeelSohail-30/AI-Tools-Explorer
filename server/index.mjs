@@ -8,7 +8,7 @@ import toolsRoute from './routes/toolsRoute.mjs'
 dotenv.config()
 
 const app = express()
-app.use(bodyParser.json())
+app.use(express.json())
 app.use(cors())
 
 app.get('/', (req, res) => {
@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 app.use('/tools', toolsRoute)
 
 mongoose
-    .connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+    .connect(process.env.MONGODB_URL)
     .then(() => {
         console.log('App connected to database');
         app.listen(process.env.PORT, () => {
