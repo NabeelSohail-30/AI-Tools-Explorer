@@ -11,6 +11,7 @@ function App() {
         <Route path="/" element={<Explorer />} />
         <Route path='/About' element={<About />} />
         <Route path='/Contact' element={<Contact />} />
+        <Route path='/Login' element={<Login />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
