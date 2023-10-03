@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 const ToolCard = ({ tool }) => {
   const [showModal, setShowModal] = useState(false);
+  const modalRef = useRef(null);
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -9,6 +10,12 @@ const ToolCard = ({ tool }) => {
 
   const redirectToTool = () => {
     window.open(tool.link, "_blank"); // Open the link in a new tab
+  };
+
+  const handleOverlayClick = (e) => {
+    if (modalRef.current && !modalRef.current.contains(e.target)) {
+      toggleModal();
+    }
   };
 
   return (
@@ -34,13 +41,19 @@ const ToolCard = ({ tool }) => {
           onClick={redirectToTool}
           className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
-          Visit Tool
+          Go to Tool
         </button>
       </div>
       {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center z-50">
+        <div
+          className="fixed inset-0 flex items-center justify-center z-50"
+          onClick={handleOverlayClick}
+        >
           <div className="absolute inset-0 bg-gray-900 opacity-50"></div>
-          <div className="z-50 bg-white p-6 rounded-lg max-w-2xl overflow-y-auto">
+          <div
+            ref={modalRef}
+            className="z-50 bg-white p-6 rounded-lg max-w-2xl overflow-y-auto"
+          >
             <div className="flex justify-end">
               <button
                 onClick={toggleModal}
@@ -77,7 +90,7 @@ const ToolCard = ({ tool }) => {
                 onClick={redirectToTool}
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
-                Visit Tool
+                Go to Tool
               </button>
             </div>
           </div>
