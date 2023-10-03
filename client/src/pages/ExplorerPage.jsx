@@ -21,8 +21,8 @@ const Explorer = () => {
           <h1 className="text-4xl font-semibold mb-4">Explorer</h1>
           <p className="text-lg">This is the Explorer page.</p>
         </div>
-        <ToolCard key={tool._id} tool={tool} />
       </div>
+      <ToolCard key={tool._id} tool={tool} />
       <Footer></Footer>
     </>
   );
