@@ -1,17 +1,22 @@
 import React from "react";
+import { useState, useEffect } from "react";
+
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import ToolCard from "../components/ToolCard";
-// import { useState } from "react";
 
 const Explorer = () => {
-  // const [tools, setTools] = useState([]);
-  
-  const tool = {
-    _id: "1",
-    name: "Tool Name",
-    description: "Tool Description",
-  };
+  const [tools, setTools] = useState([]);
+
+  useEffect(() => {
+    // Fetch tools from the server when the component mounts
+    fetch("http://localhost:8080/tools")
+      .then((response) => response.json())
+      .then((data) => {
+        setTools(data.data);
+      })
+      .catch((error) => console.error("Error fetching tools:", error));
+  }, []);
 
   return (
     <>
@@ -22,7 +27,9 @@ const Explorer = () => {
           <p className="text-lg">This is the Explorer page.</p>
         </div>
       </div>
-      <ToolCard key={tool._id} tool={tool} />
+      {tools.map((tool) => (
+        <ToolCard key={tool._id} tool={tool} /> // Pass the tool data to ToolCard
+      ))}{" "}
       <Footer></Footer>
     </>
   );
